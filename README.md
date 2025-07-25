@@ -1,0 +1,2 @@
+# LawGPT
+legal-summarizer
