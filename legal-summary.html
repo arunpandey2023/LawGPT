@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Legal Document Summarizer</title>
+</head>
+<body style="font-family: sans-serif; margin: 40px;">
+  <h2>📄 Upload a Legal Document to Summarize</h2>
+  <form id="uploadForm">
+    <input type="file" id="fileInput" name="document" accept=".pdf,.docx" required />
+    <br/><br/>
+    <button type="submit">Summarize</button>
+  </form>
+  <br/>
+  <div id="result"><b>Summary will appear here...</b></div>
+
+  <script>
+    document.getElementById('uploadForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const file = document.getElementById('fileInput').files[0];
+      const formData = new FormData();
+      formData.append('document', file);
+
+      document.getElementById('result').innerText = "⏳ Summarizing... Please wait.";
+
+      const response = await fetch('https://your-n8n-url/webhook/legal-summary', {
+        method: 'POST',
+        body: formData
+      });
+
+      const result = await response.text();
+      document.getElementById('result').innerText = result;
+    });
+  </script>
+</body>
+</html>
