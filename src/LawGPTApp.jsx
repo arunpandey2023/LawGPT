@@ -21,7 +21,7 @@ const LawGPTApp = () => {
         message: input
       });
 
-      const botMessage = response.data?.content || "Sorry, I couldn't understand that.";
+      const botMessage = response.data?.message?.content || "Sorry, I couldn't understand that.";
       setMessages(prev => [...prev, { type: "bot", text: botMessage }]);
     } catch (error) {
       console.error("Error fetching response:", error);
