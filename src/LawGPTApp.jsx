@@ -17,7 +17,7 @@ const LawGPTApp = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("https://mailabs.app.n8n.cloud/webhook/query", {
+      const response = await axios.post("https://mailabs.app.n8n.cloud/webhook-test/query", {
         message: input
       });
 
@@ -45,7 +45,7 @@ const LawGPTApp = () => {
     formData.append("file", file);
 
     try {
-      const response = await axios.post("https://mailabs.app.n8n.cloud/webhook/summary", formData, {
+      const response = await axios.post("https://mailabs.app.n8n.cloud/webhook-test/summary", formData, {
         headers: { "Content-Type": "multipart/form-data" }
       });
 
